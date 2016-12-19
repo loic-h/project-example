@@ -1,0 +1,20 @@
+$base: 1.3rem;
+
+$fontSizeGlobal: 1.05rem;
+$fontSizeSmall: 0.9rem;
+$lineHeightGlobal: 1.2;
+
+$black: #000000;
+$greyLight: #f2f2f2;
+$greyDark: #dedede;
+$greyFont: #373737;
+$white: #FFFFFF;
+$red: red;
+
+$mainWidth: 1400px;
+
+$easeDuration: 0.5s;
+$easeDurationQuick: 0.2s;
+$easeFunction: ease-out;
+
+$breakpoints: (phone: 40em, tablet: 40em, desktop: 80em);

@@ -1,0 +1,35 @@
+@mixin link-map() {
+	@include serif;
+	overflow: hidden;
+	float: left;
+	clear: left;
+	position: relative;
+
+	a, span {
+		text-decoration: none;
+		position: relative;
+		display: block;
+		margin-left: 1.5em;
+		left: -1.5em;
+		@include ease(all);
+
+		&:before {
+			content: '—';
+			display: block;
+			position: absolute;
+			left: -1.5em;
+		}
+	}
+
+	span {
+		left: 0;
+	}
+
+	&.active,
+	&:hover {
+
+		a {
+			left: 0;
+		}
+	}
+}

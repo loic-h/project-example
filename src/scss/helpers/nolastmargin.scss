@@ -1,0 +1,5 @@
+@mixin nolastmargin() {
+	> *:last-child {
+		margin-bottom: 0;
+	}
+}

@@ -1,0 +1,18 @@
+@mixin fadein() {
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
+}
+
+@mixin fadeout($duration:$easeDuration, $ease:$easeFunction, $more:false) {
+	visibility: hidden;
+	opacity: 0;
+	$transition: visibility 0s $ease $duration, opacity $duration $ease;
+	@if $more {
+		@each $trans in $more {
+			$str: ', #{$trans} #{$duration} #{$ease}';
+			$transition: unquote($transition + $str);
+		}
+	}
+	transition: $transition;
+}

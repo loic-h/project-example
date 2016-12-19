@@ -1,0 +1,45 @@
+@mixin square($size) {
+	width: $size;
+	height: $size;
+}
+
+@mixin circle($size: null) {
+	@if $size {
+		@include square($size);
+	}
+	border-radius: 50%;
+}
+
+@mixin equilateral($size, $color, $way) {
+	@include triangle($size, $size, $color, $way)
+}
+
+@mixin triangle($height, $width, $color, $way) {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-color: transparent;
+	display: block;
+
+	@if $way == "north" {
+		border-left-width: $width / 2;
+		border-right-width: $width / 2;
+		border-bottom-width: $height;
+		border-bottom-color: $color;
+	} @else if $way == "east" {
+		border-top-width: $width / 2;
+		border-bottom-width: $width / 2;
+		border-left-width: $height;
+		border-left-color: $color;
+	} @else if $way == "south" {
+		border-left-width: $width / 2;
+		border-right-width: $width / 2;
+		border-top-width: $height;
+		border-top-color: $color;
+	} @else if $way == "west" {
+		border-top-width: $width / 2;
+		border-bottom-width: $width / 2;
+		border-right-width: $height;
+		border-right-color: $color;
+	}
+}

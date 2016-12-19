@@ -1,0 +1,11 @@
+@mixin position($position, $top, $right, $bottom, $left) {
+	position: $position;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+@mixin absolute($top, $right, $bottom, $left) {
+	@include position(absolute, $top, $right, $bottom, $left);
+}

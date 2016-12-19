@@ -1,0 +1,75 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+a {
+	color: inherit;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0 0 1em 0;
+}
+
+button,
+input[type=submit],
+input[type=text],
+input[type=email],
+select,
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border-radius: 0;
+	border: none;
+	font: inherit;
+	padding: 0;
+	cursor: pointer;
+	background: none;
+	color: inherit;
+	@extend %no-outline;
+}
+
+select:-moz-focusring {
+	color: transparent;
+	text-shadow: 0 0 0 #000;
+}
+
+p {
+	margin-top: 0;
+}
+
+label {
+	font-size: inherit;
+}
+
+input:not([type=checkbox]),
+label,
+textarea {
+	font-family: inherit;
+	margin: 0;
+	outline: 0;
+
+	&:invalid {
+		outline: 0;
+		box-shadow: none;
+	}
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+figure {
+	margin: 0;
+}
+
+%no-outline {
+	outline: 0;
+}

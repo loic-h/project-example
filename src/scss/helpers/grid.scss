@@ -1,0 +1,87 @@
+@import "susy/sass/susy";
+
+$gutter: $base;
+$grid-total: 12;
+
+$susy: (
+	gutter-position: inside-static,
+	math: fluid,
+	container: 100%,
+	columns: $grid-total,
+	column-width: 10rem,
+	gutters: $gutter/10rem,
+);
+
+// Define a single element
+@mixin grid-element($nb, $inline:false) {
+	@include span($nb);
+
+	@if $inline {
+		float: none;
+		display: inline-block;
+	}
+}
+
+// Used to get element width
+@function grid-element($nb) {
+	@return span($nb);
+}
+
+// For element which have grid elements inside
+@mixin grid-container() {
+	@include clearfix();
+	@include grid-element__fix();
+}
+
+// Fix the external margin to compensate the left padding from first column, and the right margin from the last
+@mixin grid-element__fix() {
+	margin-left: - $gutter / 2;
+	margin-right: - $gutter / 2;
+}
+
+// Define a full width column
+@mixin grid-full() {
+	@include span($grid-total);
+}
+
+// adjust the external margin for element without any grid elements
+@mixin grid-adjust {
+	margin-left: $gutter / 2;
+	margin-right: $gutter / 2;
+}
+
+// Define a grid from width vales (eg: 3 6 3)
+@mixin grid-pattern($pattern) {
+	@for $i from 1 through length($pattern) {
+		$val: nth($pattern, $i);
+		&:nth-child(#{$i}) {
+			@include grid-element($val);
+		}
+	}
+}
+
+// Define a border which compensate the grid element paddings
+@mixin grid-border($style, $place:bottom) {
+	border-#{$place}: none;
+	position: relative;
+
+	&:before {
+		content: "";
+		display: block !important;
+		position: absolute;
+		left: $gutter / 2;
+		right: $gutter / 2;
+		height: 0;
+		border-top: $style;
+		@include ease(border-color);
+
+		@if $place == top {
+			top: 0;
+			bottom: auto;
+		}
+		@else {
+			bottom: 0;
+			top: auto;
+		}
+	}
+}
